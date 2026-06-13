@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đề Xuất Kế Hoạch Tiếp Thị Số & Livestream Rèm Đệm Gia Phát</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-primary: #090d16;
+            --bg-secondary: #111827;
+            --bg-card: rgba(20, 30, 54, 0.85);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            
+            --color-primary: #6366f1;
+            --color-primary-glow: rgba(99, 102, 241, 0.15);
+            --color-secondary: #0ea5e9;
+            --color-accent: #f59e0b;
+            --color-success: #10b981;
+            --color-danger: #f43f5e;
+            --color-purple: #a855f7;
+            
+            --sidebar-width: 280px;
+            --transition-speed: 0.3s;
+            --shadow-glow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f1f5f9;
+            --bg-secondary: #ffffff;
+            --bg-card: rgba(255, 255, 255, 0.95);
+            --border-color: rgba(0, 0, 0, 0.08);
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --color-primary-glow: rgba(99, 102, 241, 0.08);
+            --shadow-glow: 0 10px 30px rgba(148, 163, 184, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+            font-size: 1.05rem; /* Larger text base */
+            line-height: 1.6;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            padding: 1.5rem 1.15rem;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            z-index: 100;
+            transition: all var(--transition-speed);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .logo-text h1 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            background: linear-gradient(to right, #ffffff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        [data-theme="light"] .logo-text h1 {
+            background: linear-gradient(to right, #0f172a, #334155);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+
+        .nav-links::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .nav-links::-webkit-scrollbar-thumb {
+            background-color: var(--border-color);
+            border-radius: 4px;
+        }
+
+        .nav-item a {
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+            padding: 0.75rem 1rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
+
+        .nav-item a:hover, .nav-item.active a {
+            color: var(--text-primary);
+            background-color: var(--color-primary-glow);
+            box-shadow: inset 4px 0 0 var(--color-primary);
+        }
+
+        .nav-item a i {
+            font-size: 1.25rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .theme-toggle-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 0.9rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background-color: transparent;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle-btn:hover {
+            background-color: var(--border-color);
+        }
+
+        /* --- MAIN CONTENT --- */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex-grow: 1;
+            padding: 3rem 4rem;
+            max-width: 1300px;
+            width: calc(100% - var(--sidebar-width));
+        }
+
+        /* --- HEADER --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+
+        .header-title h2 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-title p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .header-badge {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(14, 165, 228, 0.2));
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 0.65rem 1.25rem;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .header-badge i {
+            color: var(--color-secondary);
+        }
+
+        /* --- MULTIPAGE TAB VISIBILITY --- */
+        section {
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.45s ease-out forwards;
+        }
+
+        section.active-section {
+            display: block; /* Render only the active tab */
+        }
+
+        /* --- GRID LAYOUTS --- */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* --- CARDS --- */
+        .card {
+            background-color: var(--bg-card);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-glow);
+            transition: transform 0.3s, border-color 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            border-color: rgba(99, 102, 241, 0.35);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+        }
+
+        .card-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .card-title i {
+            color: var(--color-primary);
+            font-size: 1.5rem;
+        }
+
+        /* --- BIG IDEA HERO CARD --- */
+        .hero-card {
+            background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(99, 102, 241, 0.18)), var(--bg-card);
+            padding: 3rem;
+            border-radius: 28px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-banner {
+            border-left: 5px solid var(--color-secondary);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .hero-banner h3 {
+            font-size: 2.75rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #ffffff, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.75rem;
+        }
+
+        [data-theme="light"] .hero-banner h3 {
+            background: linear-gradient(to right, #0f172a, #1d4ed8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- SWOT INTERACTIVE --- */
+        .swot-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .swot-box {
+            padding: 1.75rem;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            border: 1px solid transparent;
+            text-align: center;
+        }
+
+        .swot-s {
+            background-color: rgba(16, 185, 129, 0.08);
+            border-color: rgba(16, 185, 129, 0.15);
+        }
+        .swot-s:hover, .swot-s.active {
+            background-color: rgba(16, 185, 129, 0.15);
+            border-color: var(--color-success);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+        }
+        .swot-s h4 { color: var(--color-success); }
+
+        .swot-w {
+            background-color: rgba(244, 63, 94, 0.08);
+            border-color: rgba(244, 63, 94, 0.15);
+        }
+        .swot-w:hover, .swot-w.active {
+            background-color: rgba(244, 63, 94, 0.15);
+            border-color: var(--color-danger);
+            box-shadow: 0 0 15px rgba(244, 63, 94, 0.2);
+        }
+        .swot-w h4 { color: var(--color-danger); }
+
+        .swot-o {
+            background-color: rgba(14, 165, 233, 0.08);
+            border-color: rgba(14, 165, 233, 0.15);
+        }
+        .swot-o:hover, .swot-o.active {
+            background-color: rgba(14, 165, 233, 0.15);
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 15px rgba(14, 165, 233, 0.2);
+        }
+        .swot-o h4 { color: var(--color-secondary); }
+
+        .swot-t {
+            background-color: rgba(245, 158, 11, 0.08);
+            border-color: rgba(245, 158, 11, 0.15);
+        }
+        .swot-t:hover, .swot-t.active {
+            background-color: rgba(245, 158, 11, 0.15);
+            border-color: var(--color-accent);
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
+        }
+        .swot-t h4 { color: var(--color-accent); }
+
+        .swot-box h4 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .swot-details {
+            margin-top: 1.5rem;
+            padding: 1.75rem;
+            background-color: rgba(0, 0, 0, 0.25);
+            border-radius: 16px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            min-height: 140px;
+            border-left: 4px solid var(--color-primary);
+        }
+
+        /* --- COMPETITORS --- */
+        .competitor-tabs {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .comp-tab {
+            flex-grow: 1;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.25s ease;
+        }
+
+        .comp-tab.active {
+            background-color: var(--color-primary-glow);
+            border-color: var(--color-primary);
+            color: var(--text-primary);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+        }
+
+        .stat-row {
+            margin-bottom: 1.25rem;
+        }
+
+        .stat-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .stat-bar-container {
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.06);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .stat-bar {
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.5s ease-in-out;
+        }
+
+        /* --- ROADMAP TIMELINE --- */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 10px;
+            bottom: 10px;
+            width: 3px;
+            background-color: var(--border-color);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .timeline-badge {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: var(--bg-secondary);
+            border: 3px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            font-weight: 800;
+            z-index: 2;
+            flex-shrink: 0;
+        }
+
+        .timeline-item.active .timeline-badge {
+            border-color: var(--color-secondary);
+            background-color: var(--color-secondary);
+            color: white;
+            box-shadow: 0 0 15px rgba(14, 165, 233, 0.5);
+        }
+
+        .timeline-content h4 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-tags {
+            display: flex;
+            gap: 0.65rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            font-weight: 600;
+        }
+
+        /* --- BUDGET SIMULATOR --- */
+        .simulator-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 3rem;
+        }
+
+        .sim-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .input-group label {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+        }
+
+        .input-group select, .input-group input[type="number"] {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .input-group select:focus, .input-group input:focus {
+            border-color: var(--color-primary);
+        }
+
+        .sim-outputs {
+            background-color: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .total-display {
+            text-align: center;
+            padding: 1.5rem 0;
+            border-bottom: 2px dashed var(--border-color);
+        }
+
+        .total-amount {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--color-success);
+            margin-top: 0.75rem;
+            display: block;
+            text-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+        }
+
+        .breakdown-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.1rem 0;
+            font-size: 1.05rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .breakdown-row span:last-child {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        /* --- USP / CHANNELS --- */
+        .pillar-card {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            margin-bottom: 1.25rem;
+            align-items: center;
+        }
+
+        .pillar-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 70px;
+                padding: 1.5rem 0.5rem;
+            }
+            .logo-text, .nav-item span, .sidebar-footer button span {
+                display: none;
+            }
+            .main-content {
+                margin-left: 70px;
+                width: calc(100% - 70px);
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .simulator-grid {
+                grid-template-columns: 1fr;
+            }
+            body {
+                flex-direction: column;
+            }
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem;
+            }
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo-container">
+            <div class="logo-icon">
+                <i class="fa-solid fa-layer-group"></i>
+            </div>
+            <div class="logo-text">
+                <h1>GIA PHÁT</h1>
+                <p>Marketing Center</p>
+            </div>
+        </div>
+
+        <ul class="nav-links">
+            <li class="nav-item active" data-target="overview"><a href="#overview"><i class="fa-solid fa-chart-line"></i> <span>Tổng Quan</span></a></li>
+            <li class="nav-item" data-target="customer-persona"><a href="#customer-persona"><i class="fa-solid fa-user-group"></i> <span>Khách Hàng & Insight</span></a></li>
+            <li class="nav-item" data-target="swot"><a href="#swot"><i class="fa-solid fa-arrows-split-up-and-left"></i> <span>Phân Tích SWOT</span></a></li>
+            <li class="nav-item" data-target="competitors"><a href="#competitors"><i class="fa-solid fa-users-viewfinder"></i> <span>Đối Thủ Cạnh Tranh</span></a></li>
+            <li class="nav-item" data-target="strategy"><a href="#strategy"><i class="fa-solid fa-compass"></i> <span>Chiến Lược Tiếp Cận</span></a></li>
+            <li class="nav-item" data-target="fanpage-execution"><a href="#fanpage-execution"><i class="fa-solid fa-window-restore"></i> <span>Thực Thi Fanpage</span></a></li>
+            <li class="nav-item" data-target="live-execution"><a href="#live-execution"><i class="fa-solid fa-video"></i> <span>Vận Hành Livestream</span></a></li>
+            <li class="nav-item" data-target="roadmap"><a href="#roadmap"><i class="fa-solid fa-route"></i> <span>Lộ Trình Triển Khai</span></a></li>
+            <li class="nav-item" data-target="pricing"><a href="#pricing"><i class="fa-solid fa-tags"></i> <span>Báo Giá Dịch Vụ</span></a></li>
+            <li class="nav-item" data-target="kpi-cpl"><a href="#kpi-cpl"><i class="fa-solid fa-chart-pie"></i> <span>Chỉ Số CPL Dự Kiến</span></a></li>
+            <li class="nav-item" data-target="budget"><a href="#budget"><i class="fa-solid fa-wallet"></i> <span>Dự Toán Ngân Sách</span></a></li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <button class="theme-toggle-btn" onclick="toggleTheme()">
+                <i class="fa-solid fa-moon"></i> <span>Giao diện</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- HEADER -->
+        <header>
+            <div class="header-title">
+                <h2>Đề Xuất Kế Hoạch Tiếp Thị Số & Livestream</h2>
+                <p>Rèm Đệm Gia Phát</p>
+            </div>
+            <div class="header-badge">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>Bản Thảo Đề Xuất</span>
+            </div>
+        </header>
+
+        <!-- SECTION: OVERVIEW -->
+        <section id="overview" class="active-section">
+            <div class="card hero-card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fa-solid fa-lightbulb"></i> Ý tưởng chủ đạo (Big Idea)</span>
+                </div>
+                <div class="hero-banner">
+                    <h3>"Móng Vững Vàng - Xả Hàng Thần Tốc"</h3>
+                    <p style="font-size: 1.2rem; line-height: 1.7; color: var(--text-secondary);">
+                        Đập tan nỗi lo mua hàng online kém chất lượng của khách hàng bằng một "móng nhà" uy tín vững chắc từ Showroom online (Fanpage chính chủ), song song ứng dụng "mũi nhọn" Livestream trên page vệ tinh để kích hoạt doanh số nhanh.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 2rem;">
+                <div class="card-header">
+                    <span class="card-title"><i class="fa-solid fa-bullseye"></i> Mục Tiêu Chiến Dịch Kép</span>
+                </div>
+                <div class="grid-2" style="margin-top: 1rem; gap: 3rem;">
+                    <div>
+                        <h4 style="font-size: 1.4rem; color: var(--color-secondary); margin-bottom: 0.75rem;"><i class="fa-solid fa-star"></i> 1. Mục Tiêu Branding (Dài Hạn)</h4>
+                        <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.6;">
+                            Xây dựng hệ thống Fanpage chính hiệu từ con số 0. Tạo dựng bộ nhận diện thương hiệu đồng bộ, chuyên nghiệp để làm "Showroom online" uy tín lâu dài tại thị trường Hải Phòng và các tỉnh lân cận.
+                        </p>
+                    </div>
+                    <div style="border-left: 1px solid var(--border-color); padding-left: 2rem;">
+                        <h4 style="font-size: 1.4rem; color: var(--color-accent); margin-bottom: 0.75rem;"><i class="fa-solid fa-fire"></i> 2. Mục Tiêu Sales (Ngắn Hạn)</h4>
+                        <p style="font-size: 1.1rem; color: var(--text-secondary); line-height: 1.6;">
+                            Tổ chức chiến dịch Livestream thần tốc nhằm đẩy sạch lượng hàng tồn kho mùa hè (rèm cản sáng, đệm mát, chăn ga hè mỏng), hỗ trợ thu hồi dòng tiền và tối ưu vốn lưu động nhanh chóng.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: CUSTOMER PERSONA -->
+        <section id="customer-persona">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fa-solid fa-user-group"></i> Phân Tích Khách Hàng Mục Tiêu & Insight</span>
+                </div>
+                
+                <p style="font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.7; font-style: italic; border-left: 3px solid var(--color-primary); padding-left: 1rem;">
+                    Gia Phát đã sở hữu tệp khách hàng địa phương (Offline) lớn mạnh và ổn định qua hệ thống 4 showroom lớn tại Hải Phòng. Bản đề xuất chiến dịch này <strong>tập trung hoàn toàn vào việc khai phá và mở rộng sang tệp khách hàng Online</strong> – bóc tách sâu tâm lý và nỗi đau của nhóm khách hàng số để định vị thông điệp tiếp cận chuẩn xác nhất.
+                </p>
+
+                <!-- Chân Dung Khách Hàng -->
+                <h4 style="font-size: 1.4rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1.5rem;"><i class="fa-solid fa-users"></i> Chân Dung Khách Hàng (Tập trung Tệp Online Mới)</h4>
+                <div class="grid-2" style="gap: 2rem; align-items: stretch; margin-bottom: 3rem;">
+                    <!-- Nhóm B2C -->
+                    <div style="background-color: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 2.25rem; border-radius: 20px; border-top: 4px solid var(--color-primary);">
+                        <h5 style="font-size: 1.25rem; font-weight: 800; color: var(--color-primary); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fa-solid fa-house-user"></i> 1. Nhóm B2C (Gia Chủ / Người Ra Quyết Định Online)
+                        </h5>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; font-size: 1rem; color: var(--text-secondary); line-height: 1.6; padding-left: 0;">
+                            <li>👥 <strong>Độ tuổi:</strong> 27 - 55 tuổi (Thường làm nhà mới, căn hộ chung cư hoặc cải tạo phòng ngủ cho con cái).</li>
+                            <li>🧠 <strong>Tâm lý:</strong> Muốn tham khảo, mua sắm rèm đệm online để tiết kiệm thời gian nhưng lo sợ chất liệu ảo không giống hình, sợ tự đo sai kích thước cửa nhà mình.</li>
+                            <li>🛍️ <strong>Hành vi:</strong> Tìm kiếm mẫu rèm, cách phối màu hợp phong thủy và màu sơn tường trên MXH. Rất thích xem livestream/video cận cảnh sớ vải và ưu tiên các đơn vị đo đạc, lắp đặt tận nơi.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Nhóm B2B -->
+                    <div style="background-color: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 2.25rem; border-radius: 20px; border-top: 4px solid var(--color-secondary);">
+                        <h5 style="font-size: 1.25rem; font-weight: 800; color: var(--color-secondary); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fa-solid fa-briefcase"></i> 2. Nhóm B2B (Nhà Thầu / Thiết Kế / Homestay Tìm Kiếm Online)
+                        </h5>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; font-size: 1rem; color: var(--text-secondary); line-height: 1.6; padding-left: 0;">
+                            <li>👥 <strong>Độ tuổi:</strong> 30 - 50 tuổi.</li>
+                            <li>🧠 <strong>Tâm lý:</strong> Tìm đối tác cung cấp rèm đệm qua các kênh trực tuyến, cần sự minh bạch về thông tin và chính sách chiết khấu tốt mà không cần đến trực tiếp.</li>
+                            <li>🛍️ <strong>Hành vi:</strong> Đánh giá mức độ phủ thương hiệu online của nhà cung cấp, yêu cầu báo giá chiết khấu đại lý nhanh, giao hàng đúng hẹn để tránh trễ ca thợ, cung cấp đầy đủ chứng từ CO/CQ.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Nỗi Đau (Pain Points) -->
+                <h4 style="font-size: 1.4rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1.5rem;"><i class="fa-solid fa-triangle-exclamation"></i> Nỗi Đau Khi Mua Hàng Online (Pain Points)</h4>
+                <div class="grid-2" style="gap: 2rem; align-items: stretch; margin-bottom: 3rem;">
+                    <!-- Nỗi đau B2C -->
+                    <div style="background-color: rgba(244, 63, 94, 0.03); border: 1px solid rgba(244, 63, 94, 0.15); padding: 2.25rem; border-radius: 20px; border-left: 4px solid var(--color-danger);">
+                        <h5 style="font-size: 1.2rem; font-weight: 800; color: var(--color-danger); margin-bottom: 1.25rem;">Nỗi Đau B2C (Chủ nhà mua Online)</h5>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; font-size: 1rem; color: var(--text-secondary); line-height: 1.6; padding-left: 0;">
+                            <li>❌ <strong>Sợ sản phẩm "ảo":</strong> Lo sợ hình ảnh quảng cáo online lung linh nhưng khi nhận rèm vải mỏng tang, không cản được nắng hướng Tây, hoặc ga đệm thô nóng gây bí lưng.</li>
+                            <li>❌ <strong>Sợ sai lệch số đo:</strong> Sợ tự đo sai kích thước cửa nhà mình (lệch vài centimet khiến rèm bị hụt hoặc quét đất mất thẩm mỹ) và không tự lắp đặt được do thiếu dụng cụ.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Nỗi đau B2B -->
+                    <div style="background-color: rgba(245, 158, 11, 0.03); border: 1px solid rgba(245, 158, 11, 0.15); padding: 2.25rem; border-radius: 20px; border-left: 4px solid var(--color-accent);">
+                        <h5 style="font-size: 1.2rem; font-weight: 800; color: var(--color-accent); margin-bottom: 1.25rem;">Nỗi Đau B2B (Nhà thầu hợp tác Online)</h5>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; font-size: 1rem; color: var(--text-secondary); line-height: 1.6; padding-left: 0;">
+                            <li>❌ <strong>Sợ trễ tiến độ bàn giao:</strong> Nhà cung cấp giao rèm đệm chậm trễ do khâu xử lý đơn online chậm, khiến cả đội thợ lắp ráp phải chờ đợi, ảnh hưởng uy tín tiến độ cam kết với chủ đầu tư.</li>
+                            <li>❌ <strong>Sợ đứt gãy bảo hành:</strong> Mua từ các kho sỉ trôi nổi online, khi sản phẩm gặp lỗi kỹ thuật (phụ kiện rèm kẹt, đệm lún xẹp) thì đại lý thoái thác trách nhiệm bảo trì.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sự Thật Ngầm Hiểu (Insight) -->
+                <div style="background-color: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); padding: 2.5rem; border-radius: 24px; margin-bottom: 3.5rem; border-left: 5px solid var(--color-success);">
+                    <h4 style="font-size: 1.25rem; color: var(--color-success); margin-bottom: 1rem; font-weight: 800;">
+                        <i class="fa-solid fa-lightbulb"></i> 💡 Sự Thật Ngầm Hiểu (Insight)
+                    </h4>
+                    <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.75; font-style: italic;">
+                        "Mẫu rèm đệm quảng cáo hoa mỹ trên mạng xã hội hay sàn TMĐT thì nhiều lắm, nhưng mua online về không vừa kích thước hoặc chất liệu thô nóng thì ai chịu trách nhiệm? Tôi không cần một thương hiệu quá xa xôi. Tôi biết Gia Phát có hệ thống showroom rất lớn và uy tín trực tiếp tại Hải Phòng, nếu họ có kênh đặt hàng online chuyên nghiệp và cam kết đem mẫu vải thực tế qua tận nhà đo đạc thì tôi sẽ chốt mua ngay lập tức mà không cần phân vân."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: SWOT -->
+        <section id="swot">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fa-solid fa-arrows-split-up-and-left"></i> Phân Tích SWOT & Hành Động</span>
+                </div>
+                
+                <div class="grid-2" style="align-items: start; gap: 3rem;">
+                    <div class="swot-container">
+                        <div class="swot-box swot-s active" onclick="showSwot('s', this)">
+                            <h4>STRENGTHS (Điểm mạnh) <i class="fa-solid fa-circle-check"></i></h4>
+                        </div>
+                        <div class="swot-box swot-w" onclick="showSwot('w', this)">
+                            <h4>WEAKNESSES (Điểm yếu) <i class="fa-solid fa-circle-exclamation"></i></h4>
+                        </div>
+                        <div class="swot-box swot-o" onclick="showSwot('o', this)">
+                            <h4>OPPORTUNITIES (Cơ hội) <i class="fa-solid fa-circle-up"></i></h4>
+                        </div>
+                        <div class="swot-box swot-t" onclick="showSwot('t', this)">
+                            <h4>THREATS (Thách thức) <i class="fa-solid fa-circle-down"></i></h4>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="swot-details" id="swot-details-box">
+                            Chọn một góc phần tư SWOT ở trên để xem đánh giá chi tiết và hành động tương ứng của Rèm Đệm Gia Phát.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: COMPETITORS -->
+        <section id="competitors">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fa-solid fa-users-viewfinder"></i> Phân Tích Đối Thủ Cạnh Tranh</span>
+                </div>
+                <div class="competitor-tabs">
+                    <button class="comp-tab active" onclick="showCompetitor('hometime', this)">Rèm Hometime</button>
+                    <button class="comp-tab" onclick="showCompetitor('minhtam', this)">Mành Rèm Minh Tám</button>
+                    <button class="comp-tab" onclick="showCompetitor('minhphuc', this)">Mành Rèm Minh Phúc</button>
+                </div>
+                
+                <div class="grid-2" style="margin-top: 2rem; gap: 3rem;">
+                    <!-- Metrics Compare -->
+                    <div id="comp-metrics">
+                        <!-- Dynamically filled -->
+                    </div>
+                    
+                    <!-- Opportunity card -->
+                    <div style="background-color: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 2.25rem; border-radius: 20px; border-top: 4px solid var(--color-secondary);" id="comp-strategy">
+                        <!-- Dynamically filled -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: STRATEGY -->
+        <section id="strategy">
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-header">
+                    <span class="card-title"><i class="fa-solid fa-compass"></i> Thiết Lập Kênh Tiếp Cận Chiến Lược Song Song</span>
+                </div>
+
+                <!-- Thực tế vận hành Callout -->
+                <div style="background-color: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.18); border-left: 4px solid var(--color-accent); padding: 1.5rem; border-radius: 14px; margin-bottom: 2rem; font-size: 1.05rem; line-height: 1.6; color: var(--text-secondary);">
+                    ⚠️ <strong>Một Sự Thật Về Kỹ Thuật Facebook Ads:</strong> Để xây dựng một Fanpage mới tinh đủ điều kiện tin cậy (Trust) cao nhằm phát Livestream đều đặn và <strong>chạy được trực tiếp quảng cáo vào Live (Live Ads) mà không bị Facebook quét hạn chế/khóa tài khoản thường mất từ 6 tháng đến 1 năm</strong>. Do đó, để đạt mục tiêu kép: Vừa có diện mạo thương hiệu bền vững, vừa có thể xả hàng hè thu dòng tiền về ngay lập tức, Gia Phát cần đi song song 2 kênh dưới đây:
+                </div>
+                
+                <div class="grid-2" style="gap: 3rem; margin-bottom: 0;">
+                    <div style="border-left: 4px solid var(--color-primary); padding-left: 1.5rem;">
+                        <h4 style="font-size: 1.35rem; margin-bottom: 0.5rem; color: var(--color-primary);">Kênh 1: Fanpage Chính Chủ (Brand Page)</h4>
+                        <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.6;">
+                            <strong>Mục tiêu: Uy Tín & Dài Hạn.</strong> Xây dựng hệ sinh thái Fanpage chính chủ từ con số 0. Đây là Showroom online chính thức để khách hàng tin tưởng và làm điểm chạm kiểm chứng thương hiệu khi từ luồng Live đổ về. Kênh này cần thời gian tích lũy để tăng trưởng tự nhiên, bền vững.
+                        </p>
+                    </div>
+                    
+                    <div style="border-left: 4px solid var(--color-secondary); padding-left: 1.5rem;">
+                        <h4 style="font-size: 1.35rem; margin-bottom: 0.5rem; color: var(--color-secondary);">Kênh 2: Livestream Vệ Tinh (Sales Page)</h4>
+                        <p style="font-size: 1.05rem; color: var(--text-secondary); line-height: 1.6;">
+                            <strong>Mục tiêu: Doanh Số & Ngắn Hạn.</strong> Sử dụng Fanpage có sẵn tương tác và độ tin cậy cao (Trust đã được nuôi) để phát livestream & chạy quảng cáo Live ngay lập tức. Giúp né bộ lọc quét của Facebook và tiến hành chiến dịch xả hàng hè để thu hồi vốn ngay.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: FANPAGE EXECUTION -->
+        <section id="fanpage-execution">
+            <!-- Content Pillars -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-header">
+                    <span class="card-title"><i class="fa-solid fa-shapes"></i> 3 Trụ Cột Nội Dung (Content Pillars)</span>
+                </div>
+                <div class="grid-3" style="margin-bottom: 0;">
+                    <div class="pillar-card">
+                        <div class="pillar-icon" style="background-color: rgba(99, 102, 241, 0.15); color: var(--color-primary);"><i class="fa-solid fa-magnifying-glass"></i></div>
+                        <div>
+                            <h4 style="font-size: 1.15rem; margin-bottom: 0.35rem;">USP & Chất Lượng</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary);">Soi cận cảnh sớ vải rèm cản sáng, kiểm tra độ đàn hồi, thoáng khí nệm mút trực tiếp.</p>
+                        </div>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-icon" style="background-color: rgba(14, 165, 233, 0.15); color: var(--color-secondary);"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <div>
+                            <h4 style="font-size: 1.15rem; margin-bottom: 0.35rem;">Xu Hướng & Phối Màu</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary);">Tư vấn phong cách phối rèm hợp màu sơn tường, hướng dẫn giặt giũ bảo quản rèm đệm tại nhà.</p>
+                        </div>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="pillar-icon" style="background-color: rgba(16, 185, 129, 0.15); color: var(--color-success);"><i class="fa-solid fa-circle-check"></i></div>
+                        <div>
+                            <h4 style="font-size: 1.15rem; margin-bottom: 0.35rem;">Social Proof thực tế</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary);">Liên tục đăng tải hình ảnh, video thi công rèm tại nhà khách hàng kèm feedback thực tế.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fa-solid fa-window-restore"></i> Chi Tiết Thực Thi Quản Trị Fanpage Kênh Chính</span>
+                </div>
+                
+                <div class="grid-3" style="margin-bottom: 0; gap: 2.5rem;">
+                    <div style="background-color: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 2rem; border-radius: 20px; border-top: 4px solid var(--color-primary);">
+                        <h4 style="font-size: 1.25rem; margin-bottom: 1.25rem; color: var(--color-primary);"><i class="fa-solid fa-gears"></i> 1. Chuẩn Hóa Hạ Tầng</h4>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+                            <li>• <strong>Tối ưu hóa SEO:</strong> Tối ưu hóa tên Fanpage chuẩn tìm kiếm, thiết lập danh mục chính xác, thêm hotline và bản đồ vị trí 4 showroom.</li>
+                            <li>• <strong>Bộ diện mạo:</strong> Thiết kế Avatar & Cover chuyên nghiệp, thể hiện nét cao cấp và đồng bộ màu sắc thương hiệu Gia Phát.</li>
+                            <li>• <strong>Messenger Bot:</strong> Cài kịch bản Messenger Bot tự động chào hỏi, định hướng khách ngay khi họ gửi tin nhắn đầu tiên.</li>
+                        </ul>
+                    </div>
+
+                    <div style="background-color: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 2rem; border-radius: 20px; border-top: 4px solid var(--color-secondary);">
+                        <h4 style="font-size: 1.25rem; margin-bottom: 1.25rem; color: var(--color-secondary);"><i class="fa-solid fa-pen-nib"></i> 2. Sản Xuất Nội Dung</h4>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+                            <li>• <strong>Content Calendar:</strong> Xây dựng lịch đăng bài chi tiết theo tháng. Phân chia rõ tỷ lệ 3 trụ cột nội dung chính.</li>
+                            <li>• <strong>Copywriting SMM:</strong> Biên soạn lời bình cuốn hút, làm nổi bật tính năng sản phẩm (cản sáng, mát lưng) và kèm lời kêu gọi mua hàng.</li>
+                            <li>• <strong>Khung Template:</strong> Thiết kế template ảnh độc quyền cho các bài đăng, lồng ghép logo Gia Phát để tránh sao chép hình ảnh.</li>
+                        </ul>
+                    </div>
+
+                    <div style="background-color: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 2rem; border-radius: 20px; border-top: 4px solid var(--color-success);">
+                        <h4 style="font-size: 1.25rem; margin-bottom: 1.25rem; color: var(--color-success);"><i class="fa-solid fa-sliders"></i> 3. Vận Hành Kỹ Thuật & Ads</h4>
+                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+                            <li>• <strong>Phân bổ ngân sách:</strong> Setup chiến dịch và phân bổ ngân sách tối ưu trên kênh quảng cáo Facebook Ads của Fanpage chính chủ.</li>
+                            <li>• <strong>A/B Testing đối tượng:</strong> Thực hiện A/B Testing liên tục chân dung đối tượng khách hàng (Gia đình trẻ, Căn hộ chung cư) kết hợp tối ưu hóa khung giờ vàng để tìm ra tệp CPA rẻ nhất.</li>
+                            <li>• <strong>Báo cáo hiệu suất:</strong> Báo cáo định kỳ các chỉ số quảng cáo chuyên sâu (CPM, CPC, CPA, ROAS), theo dõi hàng ngày và bàn giao danh sách Leads khách hàng phát sinh từ chiến dịch quảng cáo.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: LIVESTREAM EXECUTION -->
+        <section id="live-execution">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fa-solid fa-video"></i> III. Kịch Bản & Vận Hành Livestream Kênh Vệ Tinh</span>
+                </div>
+                
+                <div class="grid-2" style="margin-bottom: 0; gap: 3rem;">
+                    <!-- Shift model -->
+                    <div style="background-color: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 2rem; border-radius: 20px;">
+                        <h4 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--color-accent);"><i class="fa-solid fa-clock"></i> Mô Hình Vận Hành 2 Phiên / Ngày</h4>
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <div style="background-color: rgba(0,0,0,0.15); padding: 1.25rem; border-radius: 12px; border-left: 4px solid var(--color-secondary);">
+                                <strong style="color: var(--text-primary); font-size: 1.15rem;">Ca Trưa (12h00 - 14h00):</strong>
+                                <p style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.5;">Phục vụ tệp dân văn phòng săn sale trong giờ nghỉ trưa và tranh thủ lựa chọn rèm cửa chống nắng nhanh.</p>
+                            </div>
+                            <div style="background-color: rgba(0,0,0,0.15); padding: 1.25rem; border-radius: 12px; border-left: 4px solid var(--color-purple);">
+                                <strong style="color: var(--text-primary); font-size: 1.15rem;">Ca Tối (20h00 - 22h00):</strong>
+                                <p style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 0.5rem; line-height: 1.5;">Khung giờ vàng cho các gia đình cùng thảo luận, chốt đơn thay mới nội thất chăn ga gối đệm hè mát mẻ.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Setup prep -->
+                    <div style="background-color: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 2rem; border-radius: 20px;">
+                        <h4 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--color-success);"><i class="fa-solid fa-clipboard-list"></i> Phân Định Trách Nhiệm Chuẩn Bị & Bơm Mắt Live</h4>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                            <div style="background-color: rgba(0, 0, 0, 0.15); padding: 1.1rem; border-radius: 12px; border-left: 3px solid var(--color-secondary);">
+                                <strong style="color: var(--color-secondary); font-size: 1rem;"><i class="fa-solid fa-user"></i> PHÍA KHÁCH HÀNG:</strong>
+                                <ul style="list-style: none; padding-left: 0.25rem; margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.4rem; line-height: 1.5;">
+                                    <li>• Chuẩn bị sản phẩm thực tế đảm bảo chất lượng, đa dạng mẫu mã.</li>
+                                    <li>• Setup phòng Live tại showroom: Đảm bảo ánh sáng tiêu chuẩn, camera độ nét cao để khách soi rõ sớ vải.</li>
+                                    <li>• Cung cấp tài liệu sản phẩm (Script): Đặc điểm sản phẩm, mức chi phí chiết khấu và ưu đãi.</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="background-color: rgba(0, 0, 0, 0.15); padding: 1.1rem; border-radius: 12px; border-left: 3px solid var(--color-success);">
+                                <strong style="color: var(--color-success); font-size: 1rem;"><i class="fa-solid fa-handshake"></i> PHÍA AGENCY:</strong>
+                                <ul style="list-style: none; padding-left: 0.25rem; margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.4rem; line-height: 1.5;">
+                                    <li>• Tuyển dụng và hỗ trợ đào tạo Host Live (Nếu KH chủ động được nhân sự sẽ tối ưu chi phí hơn).</li>
+                                    <li>• Kỹ thuật chạy Ads trực tiếp vào Live: Setup chiến dịch quảng cáo Live Ads, theo dõi và tối ưu hóa ngân sách quảng cáo trực tiếp theo thời gian thực của phiên Live để tối đa hóa lượt tiếp cận và giảm CPA.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: ROADMAP -->
+        <section id="roadmap">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fa-solid fa-route"></i> Lộ Trình Triển Khai Chiến Dịch (Tối Đa 3 Tháng)</span>
+                </div>
+                
+                <div class="grid-3" style="margin-bottom: 0; gap: 3rem;">
+                    <div class="timeline-item">
+                        <div class="timeline-badge" style="border-color: var(--color-primary); color: var(--color-primary);">1</div>
+                        <div class="timeline-content">
+                            <h4>Giai Đoạn 1: Setup & Audit</h4>
+                            <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.5;">Chuẩn bị page vệ tinh. Thiết lập chuẩn SEO & bộ nhận diện trang chính chủ. <strong>Audit tài nguyên quảng cáo, xây dựng chiến lược Ads và chuẩn bị cấu trúc camp test đối tượng.</strong></p>
+                            <div class="timeline-tags" style="margin-top: 0.75rem;">
+                                <span class="tag">Bàn giao page</span>
+                                <span class="tag">Thiết lập chiến dịch Ads</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-badge" style="border-color: var(--color-secondary); color: var(--color-secondary);">2</div>
+                        <div class="timeline-content">
+                            <h4>Giai Đoạn 2: Tăng Tốc & Tối Ưu Ads</h4>
+                            <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.5;">Chạy Livestream xả hàng 2 phiên/ngày kết hợp <strong>bơm ngân sách Live Ads thời gian thực. Setup quảng cáo Facebook Ads cho page chính chủ và tối ưu CPA hàng ngày.</strong></p>
+                            <div class="timeline-tags" style="margin-top: 0.75rem;">
+                                <span class="tag">Live Ads thời gian thực</span>
+                                <span class="tag">A/B Testing đối tượng</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-badge" style="border-color: var(--color-success); color: var(--color-success);">3</div>
+                        <div class="timeline-content">
+                            <h4>Giai Đoạn 3: Remarketing & Tích Lũy</h4>
+                            <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.5;">Đo lường sản phẩm bán chạy. <strong>Triển khai Remarketing (Tiếp thị lại) tệp khách hàng đã tương tác, tối ưu hóa ROAS và chăm sóc Lead data đổ về để chốt đơn chéo.</strong></p>
+                            <div class="timeline-tags" style="margin-top: 0.75rem;">
+                                <span class="tag">Remarketing & Custom Audiences</span>
+                                <span class="tag">Chăm sóc Lead Data</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: PRICING -->
+        <section id="pricing">
+            <!-- Báo Giá Các Hạng Mục Dịch Vụ Cố Định -->
+            <div class="card" style="margin-bottom: 2.5rem; padding: 2.5rem; background-color: var(--bg-secondary); border: 1px solid var(--border-color);">
+                <div class="card-header" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="display: inline-block; width: 4px; height: 32px; background-color: #3b82f6; border-radius: 2px; margin-right: 0.5rem;"></span>
+                        <h2 style="font-size: 1.85rem; font-weight: 800; color: var(--text-primary); margin: 0;">Báo Giá Các Hạng Mục Dịch Vụ Cố Định</h2>
+                    </div>
+                    <span style="background-color: rgba(59, 130, 246, 0.1); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.2); padding: 0.4rem 1rem; border-radius: 30px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">FIXED COSTS</span>
+                </div>
+                
+                <div style="overflow-x: auto; border-radius: 12px; border: 1px solid rgba(0,0,0,0.12); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 1.05rem; background-color: #ffffff;">
+                        <thead>
+                            <tr style="background-color: #0f172a; border-bottom: 1px solid #1e293b;">
+                                <th style="padding: 1.25rem 1.5rem; color: #ffffff; font-weight: 800; font-size: 1rem;">Hạng Mục Công Việc (Chi Phí Cố Định)</th>
+                                <th style="padding: 1.25rem 1.5rem; color: #ffffff; font-weight: 800; text-align: center; width: 120px; font-size: 1rem;">ĐVT</th>
+                                <th style="padding: 1.25rem 1.5rem; color: #ffffff; font-weight: 800; text-align: center; width: 120px; font-size: 1rem;">Số Lượng</th>
+                                <th style="padding: 1.25rem 1.5rem; color: #ffffff; font-weight: 800; text-align: right; width: 250px; font-size: 1rem;">Đơn Giá (VNĐ)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid rgba(0,0,0,0.08); background-color: #eef2f6;">
+                                <td style="padding: 1.5rem 1.5rem; color: #0f172a;">
+                                    <strong style="font-size: 1.1rem; color: #0f172a;">1. &nbsp;&nbsp;&nbsp;&nbsp;Giải Pháp Quản Trị Fanpage</strong><br>
+                                    <span style="font-size: 0.95rem; color: #475569; display: inline-block; margin-top: 0.35rem;">Sản xuất 15 bài viết + Thiết kế hình ảnh + Lên lịch bài đăng.</span>
+                                </td>
+                                <td style="padding: 1.5rem 1.5rem; text-align: center; color: #475569; font-weight: 600;">Tháng</td>
+                                <td style="padding: 1.5rem 1.5rem; text-align: center; color: #475569; font-weight: 600;">1</td>
+                                <td style="padding: 1.5rem 1.5rem; text-align: right; font-weight: 700; color: #2563eb; font-size: 1.2rem;">6,499,000</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(0,0,0,0.08); background-color: #ffffff;">
+                                <td style="padding: 1.5rem 1.5rem; color: #0f172a;">
+                                    <strong style="font-size: 1.1rem; color: #0f172a;">2. &nbsp;&nbsp;&nbsp;&nbsp;Giải Pháp Sản Xuất Hình Ảnh TMĐT</strong><br>
+                                    <span style="font-size: 0.95rem; color: #475569; display: inline-block; margin-top: 0.35rem;">Chụp ảnh lifestyle.</span>
+                                </td>
+                                <td style="padding: 1.5rem 1.5rem; text-align: center; color: #475569; font-weight: 600;">Gói</td>
+                                <td style="padding: 1.5rem 1.5rem; text-align: center; color: #475569; font-weight: 600;">1</td>
+                                <td style="padding: 1.5rem 1.5rem; text-align: right; font-weight: 700; color: #2563eb; font-size: 1.2rem;">3,199,000 - 6,199,000</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid rgba(0,0,0,0.08); background-color: #eef2f6;">
+                                <td style="padding: 1.5rem 1.5rem; color: #0f172a;">
+                                    <strong style="font-size: 1.1rem; color: #0f172a;">3. &nbsp;&nbsp;&nbsp;&nbsp;Giải Pháp Video Ngắn (Reels/Tiktok)</strong><br>
+                                    <span style="font-size: 0.95rem; color: #475569; display: inline-block; margin-top: 0.35rem;">15 Video/tháng. Kịch bản, quay dựng thực tế, hậu kỳ trọn gói.</span>
+                                </td>
+                                <td style="padding: 1.5rem 1.5rem; text-align: center; color: #475569; font-weight: 600;">Tháng</td>
+                                <td style="padding: 1.5rem 1.5rem; text-align: center; color: #475569; font-weight: 600;">1</td>
+                                <td style="padding: 1.5rem 1.5rem; text-align: right; font-weight: 700; color: #2563eb; font-size: 1.2rem;">12,499,000</td>
+                            </tr>
+                             <tr style="border-bottom: 1px solid rgba(0,0,0,0.08); background-color: #ffffff;">
+                                <td style="padding: 1.5rem 1.5rem; color: #0f172a;">
+                                    <strong style="font-size: 1.1rem; color: #0f172a;">4. &nbsp;&nbsp;&nbsp;&nbsp;Quản Lý Chạy Quảng Cáo (Facebook)</strong><br>
+                                    <span style="font-size: 0.95rem; color: #475569; display: inline-block; margin-top: 0.35rem;">Setup chiến dịch, A/B Testing đối tượng, theo dõi tối ưu hàng ngày và báo cáo hiệu suất định kỳ.</span>
+                                </td>
+                                <td style="padding: 1.5rem 1.5rem; text-align: center; color: #475569; font-weight: 600;">Chiến dịch</td>
+                                <td style="padding: 1.5rem 1.5rem; text-align: center; color: #475569; font-weight: 600;">Linh hoạt</td>
+                                <td style="padding: 1.5rem 1.5rem; text-align: right; font-weight: 700; color: #2563eb; font-size: 1.2rem;">Phí Dịch Vụ 10% / Ngân Sách</td>
+                            </tr>
+                            <!-- Summary Row -->
+                            <tr style="background-color: #ffffff; border-top: 2px solid #cbd5e1;">
+                                <td colspan="2" style="padding: 1.75rem 1.5rem; font-size: 1.25rem; font-weight: 800; color: #0f172a;">
+                                    Tổng Ngân Sách Dịch Vụ Cố Định Tối Thiểu (Mục 1-3):
+                                </td>
+                                <td colspan="2" style="padding: 1.75rem 1.5rem; text-align: right; font-size: 1.6rem; font-weight: 900; color: #1e3a8a;">
+                                    Từ 22,197,000
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+
+            <!-- Các Hạng Mục Chi Phí Biến Đổi -->
+            <div class="card" style="padding: 2.5rem; background-color: var(--bg-secondary); border: 1px solid var(--border-color);">
+                <div class="card-header" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="display: inline-block; width: 4px; height: 32px; background-color: #3b82f6; border-radius: 2px; margin-right: 0.5rem;"></span>
+                        <h2 style="font-size: 1.85rem; font-weight: 800; color: var(--text-primary); margin: 0;">VI. Các Hạng Mục Chi Phí Biến Đổi Dự Kiến</h2>
+                    </div>
+                    <span style="background-color: rgba(59, 130, 246, 0.1); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.2); padding: 0.4rem 1rem; border-radius: 30px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">VARIABLE COSTS</span>
+                </div>
+                
+                <p style="font-size: 1.05rem; color: #a65f00; margin-bottom: 2.5rem; line-height: 1.6; background-color: #fffbeb; padding: 1.25rem 1.5rem; border-radius: 14px; border-left: 4px solid #d97706; font-weight: 500;">
+                    * <strong style="color: #b45309;">Lưu ý:</strong> Giá thực tế có thể thay đổi linh hoạt theo từng ngày phụ thuộc vào biến động thị trường (giá nhân sự, thuật toán và giá thầu quảng cáo Facebook). Mức giá dưới đây là <strong style="color: #b45309;">mức giá thấp nhất dự kiến</strong>.
+                </p>
+
+                <div class="grid-3" style="gap: 2rem; align-items: stretch; margin-bottom: 0;">
+                    <!-- Card 1 -->
+                    <div style="background-color: #ffffff; border: 1px solid #e2e8f0; padding: 2.5rem 2.25rem; border-radius: 24px; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+                        <div>
+                            <div style="width: 52px; height: 52px; border-radius: 50%; background-color: #eff6ff; display: flex; align-items: center; justify-content: center; color: #3b82f6; font-size: 1.4rem; margin-bottom: 1.5rem;">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                            </div>
+                            <h4 style="font-size: 1.35rem; font-weight: 800; color: #0f172a; margin-bottom: 1rem;">Mua Fanpage Vệ Tinh</h4>
+                            <p style="font-size: 1rem; color: #475569; line-height: 1.65; margin-bottom: 2rem;">
+                                Trang Fanpage có sẵn độ uy tín và tương tác chuẩn để chạy Ads Livestream không bị hạn chế.
+                            </p>
+                        </div>
+                        <div>
+                            <span style="font-size: 0.9rem; color: #64748b; display: block; margin-bottom: 0.5rem; font-weight: 600;">Mua 1 lần</span>
+                            <span style="font-size: 1.55rem; font-weight: 800; color: #2563eb;">7.000.000đ - 10.000.000đ</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div style="background-color: #ffffff; border: 1px solid #e2e8f0; padding: 2.5rem 2.25rem; border-radius: 24px; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+                        <div>
+                            <div style="width: 52px; height: 52px; border-radius: 50%; background-color: #eff6ff; display: flex; align-items: center; justify-content: center; color: #3b82f6; font-size: 1.4rem; margin-bottom: 1.5rem;">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <h4 style="font-size: 1.35rem; font-weight: 800; color: #0f172a; margin-bottom: 1rem;">Thuê Mẫu Live (Host)</h4>
+                            <p style="font-size: 1rem; color: #475569; line-height: 1.65; margin-bottom: 2rem;">
+                                Nhân sự hoạt ngôn, có kinh nghiệm chuyên sâu về nội thất, xử lý tình huống và kỹ năng chốt đơn tốt.
+                            </p>
+                        </div>
+                        <div>
+                            <span style="font-size: 0.9rem; color: #64748b; display: block; margin-bottom: 0.5rem; font-weight: 600;">Theo ca (2H)</span>
+                            <span style="font-size: 1.55rem; font-weight: 800; color: #2563eb;">Từ 1.000.000đ</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div style="background-color: #ffffff; border: 1px solid #e2e8f0; padding: 2.5rem 2.25rem; border-radius: 24px; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+                        <div>
+                            <div style="width: 52px; height: 52px; border-radius: 50%; background-color: #eff6ff; display: flex; align-items: center; justify-content: center; color: #3b82f6; font-size: 1.4rem; margin-bottom: 1.5rem;">
+                                <i class="fa-solid fa-wifi"></i>
+                            </div>
+                            <h4 style="font-size: 1.35rem; font-weight: 800; color: #0f172a; margin-bottom: 1rem;">Ngân Sách Ads Live</h4>
+                            <p style="font-size: 1rem; color: #475569; line-height: 1.65; margin-bottom: 2rem;">
+                                Tiền trả thẳng cho Facebook để tiếp cận trực tiếp hàng nghìn khách hàng tiềm năng khi đang Live.
+                            </p>
+                        </div>
+                        <div>
+                            <span style="font-size: 0.9rem; color: #64748b; display: block; margin-bottom: 0.5rem; font-weight: 600;">Theo ca (Có thể tăng)</span>
+                            <span style="font-size: 1.55rem; font-weight: 800; color: #2563eb;">Từ 1.500.000đ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECTION: KPI CPL -->
+        <section id="kpi-cpl">
+            <div class="card" style="padding: 2.5rem; background-color: var(--bg-secondary); border: 1px solid var(--border-color);">
+                <div class="card-header" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <span style="display: inline-block; width: 4px; height: 32px; background-color: var(--color-success); border-radius: 2px; margin-right: 0.5rem;"></span>
+                        <h2 style="font-size: 1.85rem; font-weight: 800; color: var(--text-primary); margin: 0;">VI. Chỉ Số CPL & Hiệu Năng Dự Kiến</h2>
+                    </div>
+                    <span style="background-color: rgba(16, 185, 129, 0.1); color: var(--color-success); border: 1px solid rgba(16, 185, 129, 0.2); padding: 0.4rem 1rem; border-radius: 30px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px;">KPI TARGETS</span>
+                </div>
+
+                <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.6;">
+                    Chỉ số <strong>CPL (Cost Per Lead - Chi phí trên mỗi cơ hội chốt đơn/tin nhắn hỏi mua)</strong> dự kiến được phân tích dựa trên đặc thù hành vi của từng nhóm khách hàng mục tiêu:
+                </p>
+
+                <div class="grid-3" style="gap: 2rem; align-items: stretch; margin-bottom: 2.5rem;">
+                    <!-- Live Page CPL -->
+                    <div style="background-color: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 2rem; border-radius: 20px; border-top: 4px solid var(--color-secondary); display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <h4 style="font-size: 1.2rem; font-weight: 800; color: var(--color-secondary); margin-bottom: 0.85rem;"><i class="fa-solid fa-bolt"></i> 1. Kênh Live Vệ Tinh</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
+                                <strong>Chiến dịch Xả Hàng Hè (Nhóm Dân Văn Phòng):</strong> Quảng cáo livestream kích thích mua sắm bốc đồng cao, tỷ lệ tương tác tin nhắn/bình luận chốt đơn dễ dàng và rẻ hơn.
+                            </p>
+                        </div>
+                        <div>
+                            <span style="font-size: 0.85rem; color: var(--text-secondary); display: block; margin-bottom: 0.35rem;">CPL Dự Kiến / Lead</span>
+                            <span style="font-size: 1.5rem; font-weight: 850; color: var(--color-secondary);">30.000đ - 70.000đ</span>
+                        </div>
+                    </div>
+
+                    <!-- Main Page CPL -->
+                    <div style="background-color: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 2rem; border-radius: 20px; border-top: 4px solid var(--color-primary); display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <h4 style="font-size: 1.2rem; font-weight: 800; color: var(--color-primary); margin-bottom: 0.85rem;"><i class="fa-solid fa-gem"></i> 2. Fanpage Chính Chủ</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
+                                <strong>Khách Hàng Dự Án Cao Cấp (Gia Đình Trẻ):</strong> Đơn hàng làm rèm trọn gói, đệm mát cao cấp cần tư vấn sâu, khảo sát đo đạc tận nhà nên giá trị cơ hội chốt đơn (Qualified Lead) sẽ đắt hơn.
+                            </p>
+                        </div>
+                        <div>
+                            <span style="font-size: 0.85rem; color: var(--text-secondary); display: block; margin-bottom: 0.35rem;">CPL Dự Kiến / Lead</span>
+                            <span style="font-size: 1.5rem; font-weight: 850; color: var(--color-primary);">80.000đ - 150.000đ</span>
+                        </div>
+                    </div>
+
+                    <!-- Market Average CPL -->
+                    <div style="background-color: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); padding: 2rem; border-radius: 20px; border-top: 4px solid var(--color-success); display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <h4 style="font-size: 1.2rem; font-weight: 800; color: var(--color-success); margin-bottom: 0.85rem;"><i class="fa-solid fa-chart-line"></i> 3. Trung Bình Ngành</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">
+                                <strong>Tham Khảo Thị Trường Nội Thất Vải:</strong> Giá thầu trung bình hiện nay của thị trường quảng cáo tin nhắn (Messenger Ads) ngành nội thất gia dụng địa phương.
+                            </p>
+                        </div>
+                        <div>
+                            <span style="font-size: 0.85rem; color: var(--text-secondary); display: block; margin-bottom: 0.35rem;">Mức Trung Bình Tham Khảo</span>
+                            <span style="font-size: 1.5rem; font-weight: 850; color: var(--color-success);">60.000đ - 100.000đ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategic Integration Callout -->
+                <div style="background: rgba(16, 185, 129, 0.04); border: 1px solid rgba(16, 185, 129, 0.15); border-radius: 14px; padding: 1.5rem; display: flex; align-items: flex-start; gap: 1rem;">
+                    <div style="font-size: 1.5rem; color: var(--color-success); margin-top: 0.1rem;"><i class="fa-solid fa-lightbulb"></i></div>
+                    <div>
+                        <strong style="color: var(--text-primary); font-size: 1.05rem; display: block; margin-bottom: 0.35rem;">Chiến Lược Tối Ưu Hóa Ngân Sách Thực Tế:</strong>
+                        <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.6; margin: 0;">
+                            "Với ngân sách quảng cáo trực tiếp trong phiên Live từ 1.500.000đ/ca, mục tiêu của chiến dịch là duy trì mức CPL tối ưu từ 30.000đ - 70.000đ/Lead. Đội ngũ kỹ thuật sẽ liên tục theo dõi giá thầu theo thời gian thực để đảm bảo luồng tin nhắn đổ về ổn định với chi phí rẻ nhất."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: BUDGET SIMULATOR -->
+        <section id="budget">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title"><i class="fa-solid fa-calculator"></i> Bảng Tính & Dự Toán Ngân Sách Dự Kiến</span>
+                </div>
+                
+                <div class="simulator-grid">
+                    <!-- Inputs -->
+                    <div class="sim-inputs">
+                        <h4 style="font-size: 1.25rem; color: var(--text-primary); margin-bottom: 0.5rem;">Tùy chỉnh thông số chiến dịch:</h4>
+                        
+                        <div class="input-group">
+                            <label for="fanpage-months">Quản trị Fanpage chính chủ (Tháng) - 6.499.000đ/tháng</label>
+                            <input type="number" id="fanpage-months" min="0" max="12" value="1" oninput="calculateBudget()">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="photo-pkg">Gói chụp ảnh sản phẩm TMĐT (VNĐ)</label>
+                            <select id="photo-pkg" onchange="calculateBudget()">
+                                <option value="0">Không chọn</option>
+                                <option value="3199000" selected>Gói Tiết Kiệm - 3,199,000đ</option>
+                                <option value="6199000">Gói Chuyên Nghiệp - 6,199,000đ</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="video-months">Sản xuất Video ngắn Reels/Tiktok (Tháng) - 12.499.000đ/tháng (15 video)</label>
+                            <input type="number" id="video-months" min="0" max="12" value="1" oninput="calculateBudget()">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="satellite-page">Mua Fanpage Vệ Tinh (Một lần mua đứt)</label>
+                            <select id="satellite-page" onchange="calculateBudget()">
+                                <option value="0">Không mua</option>
+                                <option value="7000000" selected>Mức Cơ Bản - 7,000,000đ</option>
+                                <option value="10000000">Mức Chất Lượng Cao - 10,000,000đ</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="ad-budget">Ngân sách tự chạy quảng cáo chính (VNĐ)</label>
+                            <input type="number" id="ad-budget" min="0" max="1000000000" value="20000000" step="5000000" oninput="calculateBudget()">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="live-sessions">Số ca Livestream (Mỗi ca 2 giờ)</label>
+                            <input type="number" id="live-sessions" min="0" max="300" value="30" oninput="calculateBudget()">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="host-rate">Chi phí thuê Host Livestream (Đồng/Ca 2H)</label>
+                            <input type="number" id="host-rate" min="0" max="10000000" value="1000000" step="100000" oninput="calculateBudget()">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="ads-rate">Ngân sách quảng cáo mỗi phiên Live (Đồng/Ca)</label>
+                            <input type="number" id="ads-rate" min="0" max="10000000" value="1500000" step="100000" oninput="calculateBudget()">
+                        </div>
+                    </div>
+
+                    <!-- Outputs / Dynamic presentation -->
+                    <div class="sim-outputs">
+                        <div>
+                            <h4 style="font-size: 1.25rem; color: var(--text-secondary); text-align: center; font-weight: 700;">TỔNG NGÂN SÁCH DỰ KIẾN</h4>
+                            <div class="total-display">
+                                <span class="total-amount" id="total-cost">0 đ</span>
+                            </div>
+                        </div>
+
+                        <div style="margin: 1.5rem 0;">
+                            <div class="breakdown-row">
+                                <span>Chi phí cố định (Dịch vụ):</span>
+                                <span id="fixed-cost">0 đ</span>
+                            </div>
+                            <div class="breakdown-row">
+                                <span>Mua Fanpage vệ tinh:</span>
+                                <span id="satellite-cost">0 đ</span>
+                            </div>
+                            <div class="breakdown-row">
+                                <span>Chi phí thuê Host Livestream:</span>
+                                <span id="live-host-cost">0 đ</span>
+                            </div>
+                            <div class="breakdown-row">
+                                <span>Ngân sách quảng cáo Livestream:</span>
+                                <span id="live-ad-cost">0 đ</span>
+                            </div>
+                            <div class="breakdown-row">
+                                <span>Ngân sách chạy quảng cáo chính:</span>
+                                <span id="ad-budget-cost">0 đ</span>
+                            </div>
+                            <div class="breakdown-row">
+                                <span>Phí quản lý quảng cáo (10% tổng Ads):</span>
+                                <span id="ad-service-cost">0 đ</span>
+                            </div>
+                        </div>
+                        
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; background-color: rgba(245, 158, 11, 0.05); padding: 1rem; border-radius: 12px; border: 1px solid rgba(245, 158, 11, 0.15);">
+                            <strong>* Lưu ý:</strong> Ngân sách thực tế có thể thay đổi linh hoạt theo từng ngày tùy thuộc vào biến động thị trường (giá nhân sự, thuật toán và giá thầu quảng cáo Facebook).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Tabbed routing navigation function
+        function navigateToSection(hash) {
+            const sectionId = hash.replace('#', '') || 'overview';
+            
+            // Hide all sections
+            document.querySelectorAll('main section').forEach(sec => {
+                sec.classList.remove('active-section');
+            });
+            
+            // Show target section
+            const targetSec = document.getElementById(sectionId);
+            if (targetSec) {
+                targetSec.classList.add('active-section');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            
+            // Toggle active sidebar link styling
+            document.querySelectorAll('.sidebar .nav-links .nav-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('data-target') === sectionId) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        // Listen for hash changes
+        window.addEventListener('hashchange', () => {
+            navigateToSection(location.hash);
+        });
+
+        // Theme toggling
+        function toggleTheme() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.body.setAttribute('data-theme', newTheme);
+            
+            const btnIcon = document.querySelector('.theme-toggle-btn i');
+            if (newTheme === 'light') {
+                btnIcon.className = 'fa-solid fa-sun';
+            } else {
+                btnIcon.className = 'fa-solid fa-moon';
+            }
+        }
+
+        // SWOT Matrix Interactive
+        const swotData = {
+            s: {
+                title: "Điểm mạnh (Strengths)",
+                text: "• <strong>Đa dạng:</strong> Hệ sinh thái nội thất vải toàn diện.<br>• <strong>Hạ tầng:</strong> 4 showroom tại vị trí đắc địa Hải Phòng.<br>• <strong>Kinh nghiệm:</strong> Đã triển khai các dự án B2B lớn (Vinhomes, khách sạn).<br>• <strong>Giải pháp:</strong> Gói giải pháp hiện đại trọn gói (Smarthome, giàn phơi).<br><br><strong>Hành động:</strong> Tận dụng ưu thế hạ tầng & hệ sinh thái sản phẩm để củng cố niềm tin cho khách mua hàng online thông qua video/live thực tế tại showroom."
+            },
+            w: {
+                title: "Điểm yếu (Weaknesses)",
+                text: "• <strong>Số hóa yếu:</strong> Hiện tại chưa có Fanpage chính chủ, Website bài bản hay kênh tương tác online mạnh.<br>• <strong>Online:</strong> Thương hiệu dễ bị lu mờ trước đối thủ trên MXH.<br>• <strong>Thị trường:</strong> Phụ thuộc nhiều vào thị trường Hải Phòng, chưa mở rộng ra ngoại tỉnh.<br><br><strong>Hành động:</strong> Setup gấp Fanpage chính chủ chuẩn SEO để làm 'Showroom online' đồng thời mua page vệ tinh có Trust để chạy quảng cáo bán hàng ngay."
+            },
+            o: {
+                title: "Cơ hội (Opportunities)",
+                text: "• <strong>TikTok/Reels:</strong> Tiềm năng làm các video ngắn review sản phẩm thu hút tệp khách hàng trẻ tuổi.<br>• <strong>Xu hướng:</strong> Nhu cầu rèm tự động thông minh tại các dự án chung cư/đô thị mới đang tăng cao.<br>• <strong>B2B phục hồi:</strong> Các dự án BĐS tại Hải Phòng, Quảng Ninh ấm dần lên.<br><br><strong>Hành động:</strong> Sản xuất tối thiểu 15 video ngắn/tháng tiếp cận xu hướng tự động hóa, thiết kế hiện đại để hút tệp khách trẻ."
+            },
+            t: {
+                title: "Thách thức (Threats)",
+                text: "• <strong>Cạnh tranh:</strong> Áp lực lớn từ các chuỗi nội thất lớn và các xưởng sản xuất lâu đời.<br>• <strong>Giá cả TMĐT:</strong> Cạnh tranh gay gắt về giá trên Shopee, TikTok Shop.<br>• <strong>Hành vi mua hàng:</strong> Khách hàng có xu hướng so sánh kỹ các review online trước khi ra quyết định.<br><br><strong>Hành động:</strong> Nhấn mạnh dịch vụ hậu mãi vượt trội như bảo hành trọn đời, giặt rèm miễn phí năm đầu để gạt bỏ nỗi sợ về giá."
+            }
+        };
+
+        function showSwot(type, element) {
+            // Remove active classes
+            document.querySelectorAll('.swot-box').forEach(box => box.classList.remove('active'));
+            // Add active class to clicked
+            element.classList.add('active');
+            
+            // Update details
+            const detailBox = document.getElementById('swot-details-box');
+            detailBox.innerHTML = `<strong>${swotData[type].title}</strong><br><br>${swotData[type].text}`;
+            detailBox.style.borderLeftColor = `var(--color-${type === 's' ? 'success' : type === 'w' ? 'danger' : type === 'o' ? 'secondary' : 'accent'})`;
+        }
+
+        // Competitor comparison data
+        const competitorData = {
+            hometime: {
+                name: "Rèm Hometime",
+                url: "https://facebook.com/remhomelux",
+                linkText: "facebook.com/remhomelux",
+                followers: " (~1.4K followers)",
+                scores: [
+                    { label: "Độ chuyên nghiệp thương hiệu", value: 85, color: "var(--color-primary)" },
+                    { label: "Website & Công cụ số", value: 75, color: "var(--color-secondary)" },
+                    { label: "Tương tác tương tác mạng xã hội", value: 45, color: "var(--color-accent)" },
+                    { label: "Mức độ cạnh tranh về giá", value: 50, color: "var(--color-danger)" }
+                ],
+                strategy: "<h4>Cơ hội bứt phá cho Gia Phát:</h4><p style='margin-top:0.5rem;'>• <strong>Tối ưu ngân sách:</strong> Cung cấp chất lượng rèm/đệm tương đương nhưng với giá linh hoạt và minh bạch hơn để thu hút khách hàng ngại chi phí cao từ Hometime.</p><p style='margin-top:0.5rem;'>• <strong>Đẩy mạnh tương tác:</strong> Tận dụng mảng Livestream tương tác sâu để nhanh chóng bứt phá vượt qua mức 1.4K followers của đối thủ.</p>"
+            },
+            minhtam: {
+                name: "Mành Rèm Minh Tám",
+                url: "https://www.facebook.com/profile.php?id=61557015974330",
+                linkText: "facebook.com/profile.php?id=61557015974330",
+                followers: " (~1K followers)",
+                scores: [
+                    { label: "Độ chuyên nghiệp thương hiệu", value: 40, color: "var(--color-primary)" },
+                    { label: "Website & Công cụ số", value: 20, color: "var(--color-secondary)" },
+                    { label: "Tương tác tương tác mạng xã hội", value: 50, color: "var(--color-accent)" },
+                    { label: "Mức độ cạnh tranh về giá", value: 75, color: "var(--color-success)" }
+                ],
+                strategy: "<h4>Cơ hội bứt phá cho Gia Phát:</h4><p style='margin-top:0.5rem;'>• <strong>Chuyên nghiệp hóa hình ảnh:</strong> Fanpage Minh Tám mang tính cá nhân cao. Gia Phát cần đầu tư diện mạo bài bản, đồng bộ để tạo sự tin tưởng tuyệt đối vượt xa đối thủ.</p><p style='margin-top:0.5rem;'>• <strong>Định vị chuyên gia:</strong> Viết các bài chia sẻ có chiều sâu về phong thủy, quy chuẩn thi công biệt thự để định vị thương hiệu cao cấp.</p>"
+            },
+            minhphuc: {
+                name: "Mành Rèm Minh Phúc",
+                url: "https://www.facebook.com/search/top?q=m%C3%A0nh%20r%C3%A8m%20minh%20ph%C3%BAc",
+                linkText: "facebook.com/search/top?q=mành rèm minh phúc",
+                followers: " (~1.7K followers - cao nhất)",
+                scores: [
+                    { label: "Độ chuyên nghiệp thương hiệu", value: 45, color: "var(--color-primary)" },
+                    { label: "Website & Công cụ số", value: 30, color: "var(--color-secondary)" },
+                    { label: "Tương tác tương tác mạng xã hội", value: 70, color: "var(--color-accent)" },
+                    { label: "Mức độ cạnh tranh về giá", value: 85, color: "var(--color-success)" }
+                ],
+                strategy: "<h4>Cơ hội bứt phá cho Gia Phát:</h4><p style='margin-top:0.5rem;'>• <strong>Thu hút tệp khách gu thẩm mỹ:</strong> Minh Phúc hình ảnh còn lộn xộn. Gia Phát có cơ hội tung ra các bộ sưu tập Lookbook sang trọng, lôi kéo tệp khách hàng yêu sự tinh tế.</p><p style='margin-top:0.5rem;'>• <strong>Cạnh tranh dịch vụ bền vững:</strong> Nhấn mạnh bảo hành trọn đời & giặt rèm miễn phí năm đầu thay vì chỉ cạnh tranh giá thuần túy.</p>"
+            }
+        };
+
+        function showCompetitor(compKey, element) {
+            // Active tabs
+            document.querySelectorAll('.comp-tab').forEach(tab => tab.classList.remove('active'));
+            if(element) element.classList.add('active');
+            
+            const data = competitorData[compKey];
+            
+            // Render metrics
+            let metricsHtml = `<h4 style="font-size:1.2rem; margin-bottom:1.5rem;">Đánh giá ${data.name} <span style="font-size:0.9rem; font-weight:normal; color:var(--text-secondary);"><a href="${data.url}" target="_blank" style="color: var(--color-secondary); text-decoration: none; border-bottom: 1px dashed var(--color-secondary);">${data.linkText}</a>${data.followers}</span></h4>`;
+            data.scores.forEach(s => {
+                metricsHtml += `
+                    <div class="stat-row">
+                        <div class="stat-label">
+                            <span>${s.label}</span>
+                            <span>${s.value}%</span>
+                        </div>
+                        <div class="stat-bar-container">
+                            <div class="stat-bar" style="width: ${s.value}%; background-color: ${s.color};"></div>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('comp-metrics').innerHTML = metricsHtml;
+            
+            // Render strategy
+            document.getElementById('comp-strategy').innerHTML = data.strategy;
+        }
+
+        // Budget Calculator logic
+        function formatMoney(amount) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount).replace('₫', 'đ');
+        }
+
+        function calculateBudget() {
+            // Inputs
+            const fanpageMonths = parseInt(document.getElementById('fanpage-months').value) || 0;
+            const photoPkgVal = parseInt(document.getElementById('photo-pkg').value) || 0;
+            const videoMonths = parseInt(document.getElementById('video-months').value) || 0;
+            const satellitePageVal = parseInt(document.getElementById('satellite-page').value) || 0;
+            const adBudgetVal = parseInt(document.getElementById('ad-budget').value) || 0;
+            const liveSessions = parseInt(document.getElementById('live-sessions').value) || 0;
+            const hostRate = parseInt(document.getElementById('host-rate').value) || 0;
+            const adsRate = parseInt(document.getElementById('ads-rate').value) || 0;
+
+            // Calculation
+            const fanpageCost = fanpageMonths * 6499000;
+            const videoCost = videoMonths * 12499000;
+            const fixedTotal = fanpageCost + photoPkgVal + videoCost;
+            
+            const liveAdBudget = liveSessions * adsRate;
+            const liveHostCost = liveSessions * hostRate;
+            
+            // Total Advertising Budget (Main Ads + Live Ads)
+            const totalAdBudget = adBudgetVal + liveAdBudget;
+            
+            // Advertising Costs (10% Service Fee on Total Ad Budget)
+            const adServiceFee = totalAdBudget * 0.10;
+
+            const overallTotal = fixedTotal + satellitePageVal + liveHostCost + liveAdBudget + adBudgetVal + adServiceFee;
+
+            // Render outputs
+            document.getElementById('fixed-cost').innerText = formatMoney(fixedTotal);
+            document.getElementById('satellite-cost').innerText = formatMoney(satellitePageVal);
+            document.getElementById('live-host-cost').innerText = formatMoney(liveHostCost);
+            document.getElementById('live-ad-cost').innerText = formatMoney(liveAdBudget);
+            document.getElementById('ad-budget-cost').innerText = formatMoney(adBudgetVal);
+            document.getElementById('ad-service-cost').innerText = formatMoney(adServiceFee);
+            document.getElementById('total-cost').innerText = formatMoney(overallTotal);
+        }
+
+        // Initialize state
+        window.onload = function() {
+            // Check initial URL hash, default to #overview
+            navigateToSection(location.hash);
+            
+            showSwot('s', document.querySelector('.swot-box.swot-s'));
+            showCompetitor('hometime');
+            calculateBudget();
+        }
+    </script>
+</body>
+</html>
